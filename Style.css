@@ -78,7 +78,6 @@ a{
 .hoverclass:hover{
     transition: color 0.5s ease;
     transition: background-color 0.5s ease;
-    transition: h1:font-size 0.5s ease;
     color: #ffffff;
     background-color: #ffc5c5;
 }
