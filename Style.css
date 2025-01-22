@@ -8,11 +8,12 @@
 h1 {
     color: #000000;
     font-size: 80px;
+    background-color: white;
     margin: 30px;
     padding: 10px;
     border: solid #3b3b55;
     border-radius: 5px;
-    box-shadow: #212c2c 20px 20px;
+    box-shadow: #2c2c2c 20px 20px;
     font-family: "Jersey 15", serif;
 
     text-align: center;
@@ -21,13 +22,36 @@ h2 {
     color: #000000;
     text-align: center;
     font-size: 30px;
+    background-color: white;
     margin: 30px 40px 0px;
     padding: 10px;
     border: solid #3b3b55;
     border-radius: 5px;
     box-shadow: #212c2c 10px 20px;
     font-family: "Jersey 15", serif;
+}
+h3 {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    color: #000000;
+    font-size: 40px;
+    margin: 10px 10px;
+    padding: 5px;
     font-family: "Jersey 15", serif;
+}
+h6 {
+    display:flex;
+    text-align: center;
+    align-items: center;
+     justify-content: center;
+    color: #000000;
+    font-size: 50px;
+    margin: 10px 10PX 40PX 10px;
+    font-family: "Jersey 15", serif;
+    border: solid  #212c2c;
+    box-shadow: #212c2c 5px 20px;
+    border-radius: 5px;
 }
 nav {
     background-color: #ffffff;
@@ -39,7 +63,7 @@ nav {
     font-family: "Jersey 15", serif;
 
     text-align: center;
-    float: left;
+    float: center;
     
 
 }
@@ -54,7 +78,13 @@ a{
 }
 
 .navbar {
+    position: sticky;
+    text-align: center;
+
+    left: 1%;
+    top: 1%;
     background-color: #ffffff;
+    z-index: 1;
 }
 
 
@@ -80,4 +110,168 @@ a{
     transition: background-color 0.5s ease;
     color: #ffffff;
     background-color: #ffc5c5;
+}
+.hoverclassh2:hover{
+    transition: color 0.5s ease;
+    transition: background-color 0.5s ease;
+    color: #ffffff;
+    background-color: #ffc5c5;
+}
+
+
+article{
+    position: relative;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    top: 100px;
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 30px 40px 0px;
+    border: solid  #212c2c;
+    box-shadow: #212c2c 5px 20px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-family: "Jersey 15", serif;
+    transition: 
+}
+
+{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+body{
+    
+}
+section{
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
+position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 300%;
+    background-color: black;
+    
+    animation: animateBg 50s linear infinite;
+}
+
+@keyframes animateBg{
+    0%,100%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.2);
+    }
+}
+
+span{
+    position: absolute;
+    top:50%;
+    left:50%;
+    width: 4px;
+    height: 4px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(255,255,255,0.1),0 0 0 8px rgba(255,255,255,0.1),0 0 20px rgba(255,255,255,0.1);
+    animation: animate 3s linear infinite;
+}
+span::before{
+    content:'';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 300px;
+    height: 1px;
+    background: linear-gradient(90deg,#fff,transparent);
+}
+@keyframes animate
+{
+    0%
+    {
+        transform: rotate(315deg) translateX(0);
+        opacity: 1;
+    }
+    70%
+    {
+        opacity: 1;
+    }
+    100%
+    {
+        transform: rotate(315deg) translateX(-1000px);
+        opacity: 0;
+    }
+}
+span:nth-child(1){
+    top: 0;
+    right: 0;
+    left: initial;
+    animation-delay: 0s;
+    animation-duration: 1s;
+}
+span:nth-child(2){
+    top: 0;
+    right: 80px;
+    left: initial;
+    animation-delay: 0.2s;
+    animation-duration: 3s;
+}
+span:nth-child(3){
+    top: 80;
+    right: 0px;
+    left: initial;
+    animation-delay: 0.4s;
+    animation-duration: 2s;
+}
+span:nth-child(4){
+    top: 0;
+    right: 180px;
+    left: initial;
+    animation-delay: 0.6s;
+    animation-duration: 1.5s;
+}
+span:nth-child(5){
+    top: 0;
+    right: 400px;
+    left: initial;
+    animation-delay: 0.8s;
+    animation-duration: 2.5s;
+}
+span:nth-child(6){
+    top: 0;
+    right: 600px;
+    left: initial;
+    animation-delay: 1s;
+    animation-duration: 3s;
+}
+span:nth-child(7){
+    top: 300px;
+    right: 0px;
+    left: initial;
+    animation-delay: 1.2s;
+    animation-duration: 1.75s;
+}
+span:nth-child(8){
+    top: 0px;
+    right: 700px;
+    left: initial;
+    animation-delay: 1.4s;
+    animation-duration: 1.25s;
+}
+span:nth-child(9){
+    top: 0px;
+    right: 1000px;
+    left: initial;
+    animation-delay: 0.75s;
+    animation-duration: 2.25s;
+}
+span:nth-child(9){
+    top: 0px;
+    right: 450px;
+    left: initial;
+    animation-delay: 2.75s;
+    animation-duration: 2.75s;
 }
