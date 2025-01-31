@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles1.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8.3/dist/teachablemachine-image.min.js"></script>
+    <title>Cancer Tester</title>
+</head>
+<body>
+<div class="container">
+    <h1>Thyroid Nodule Classifier</h1>
+    <p class="description">Upload a model file (.json), weights file (.bin), and metadata file (.json) to classify ultrasound images.</p>
+    
+    <div class="download">
+        <h1>Download The Pre-Trained Model</h1>
+        <ul class="list-item">
+            <li><a href="https://drive.google.com/file/d/1QytnCLqkKmfhUk_EG1wdkEPKYjhWokGa/view?usp=sharing">Model</a></li>
+            <li><a href="https://drive.google.com/file/d/1bUN_8zvalDEZnGgxRXafxdvPnkyfpmGN/view?usp=sharing">Weights</a></li>
+            <li><a href="https://drive.google.com/file/d/1p5FD_VzZbxul27DHvr_l8ODNnzRLvLp3/view?usp=sharing">Metadata</a></li>
+        </ul>
+    </div>
+
+    <div class="file-upload">
+        <label for="upload-model">Model File (.json)</label>
+        <input type="file" id="upload-model" accept=".json">
+    </div>
+    
+    <div class="file-upload">
+        <label for="upload-weights">Weights File (.bin)</label>
+        <input type="file" id="upload-weights" accept=".bin">
+    </div>
+    
+    <div class="file-upload">
+        <label for="upload-metadata">Metadata File (.json)</label>
+        <input type="file" id="upload-metadata" accept=".json">
+    </div>
+    
+    <button class="upload-button" onclick="loadModel()">Load Model</button>
+    
+    <div class="image-upload">
+        <label for="imageInput">Upload Image</label>
+        <input type="file" id="imageInput" accept="image/*">
+        <img id="imagePreview" class="hidden">
+    </div>
+ <div class="form-group">  
+    <button class="classify-button" onclick="classifyImage()">Classify Image</button>
+    
+    <p id="result" class="result"></p>
+</div>
+    
+    <script>
+        let model;
+        
+        document.getElementById('imageInput').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.getElementById('imagePreview');
+                    img.src = e.target.result;
+                    img.classList.remove('hidden');
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+        
+        async function loadModel() {
+            const uploadModel = document.getElementById('upload-model');
+            const uploadWeights = document.getElementById('upload-weights');
+            const uploadMetadata = document.getElementById('upload-metadata');
+            
+            if (!uploadModel.files.length || !uploadWeights.files.length || !uploadMetadata.files.length) {
+                alert("Please upload all model files.");
+                return;
+            }
+            
+            model = await tmImage.loadFromFiles(
+                uploadModel.files[0], 
+                uploadWeights.files[0], 
+                uploadMetadata.files[0]
+            );
+            alert("Model loaded successfully!");
+        }
+        
+        async function classifyImage() {
+            if (!model) {
+                alert("Please load the model first.");
+                return;
+            }
+            const imgElement = document.getElementById('imagePreview');
+            const prediction = await model.predict(imgElement, false);
+            
+            let resultText = "Predictions:<br>";
+            prediction.forEach(pred => {
+                resultText += `${pred.className}: ${(pred.probability * 100).toFixed(2)}%<br>`;
+            });
+            
+            document.getElementById('result').innerHTML = resultText;
+        }
+    </script>
+</div>
+    <footer class="result">
+        <p>&copy; 2025 Vaughn-WS. All rights reserved.</p>
+    </footer>
+</body>
+    
+</body>
+</html>

@@ -4,44 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" type="text/css" href="styles.css">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playwrite+VN:wght@100..400&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
-    <title>Landing Page</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playwrite+VN:wght@100..400&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <title>Portfolio</title>
 </head>
 <body>
     <header>
         <h1 class="logo">Hello World</h1>
     </header>
-    <section class="container">
+    
+    <nav class="container">
         <div class="nav">
-                 <ul class="list-item">
-                     <li><a style="text-decoration: none;" href="https://www.imdb.com/title/tt0113568/">IMDB</a></li>
-                     <li><a style="text-decoration: none;" href="https://ghostintheshell.fandom.com/wiki/Ghost_in_the_Shell_Wiki">Wiki</a></li>
-                     <li><a style="color: rgb(255, 105, 232); font-size:25px; text-decoration: none;" href="https://9animetv.to/watch/ghost-in-the-shell-220?ep=58169">Watch Now!</a></li>
-                     <li><a style="text-decoration: none;" href="https://www.reddit.com/r/Ghost_in_the_Shell/">Community</a></li>
-                     <li><a style="text-decoration: none;" href="https://en.wikipedia.org/wiki/Ghost_in_the_Shell">FAQ</a></li>
-                 </ul>
-            </div>
+            <ul class="list-item">
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="Classifier.html">Thyroid Scanner</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="Old Versions/GITS PAGE/index.html">Old Versions</a></li>
+            </ul>
         </div>
-
+    </nav>
+    
+   <section>
+        <h2 class="hero-text">This Is My Portfolio</h2>
+        <p class="hero-text">Check out my projects below!</p>
     </section>
-
-
-    <!-- Article Section -->
-    <article class="article">
-        <video class="roundedimage" controls autoplay> 
-            <source src="youtube_x-zUAb_ndDk_686x480_h264.mp4" type="video/mp4">
-            </video>
-        <h2>The Story</h2>
-        <p>"Ghost in the Shell" is a cyberpunk franchise set in a near-future world where the line between humanity and technology is blurred. Originally a manga by Masamune Shirow, it has spawned multiple anime adaptations, films, and reimaginings. The story follows Major Motoko Kusanagi, a highly skilled cybernetic operative of Public Security Section 9, an elite counter-cyberterrorism task force.
-            With a fully synthetic body and a human mind, the Major grapples with philosophical questions about identity, consciousness, and the nature of the "ghost"—the essence of self—within a cybernetic "shell." As she hunts cyber-criminals and rogue AIs, she confronts existential dilemmas about free will, artificial intelligence, and the merging of man and machine in an increasingly digitized world.
-            The franchise is renowned for its deep themes, intricate storytelling, and visionary depiction of a hyperconnected future dominated by hacking, surveillance, and political intrigue.</p>
-    </article>
-
-    <!-- Footer Section -->
+    
+    <a href="http://www.google.com">
+    <section id="projects" class="article">
+        <img class="center" src="Placeholder.jpg" alt="Thyroid Image">
+        <div class="article">
+          <h2>Thyroid Screener</h2>
+          <p>This is my first attempt to use tensorflow to classify images, it is trained to classify thyroid nodules as either benign or malignant, it was trained on 6000 images. </p>
+          <p>The model used 500 epochs, with a batch size of 16 and a learning rate of 0.001. I used a publicly available dataset from harvard med and a postgresql database to manage patient names and historys, as well as file names.</p>
+        </div>
+    </section>
+    </a>
+    
+    <section id="about" class="article">
+        <h2>About Me</h2>
+        <p>I am a student at Red River College, in the Full-Stack Web Development Program, im in term 1 and am currently learning the basics of SQL, JAVA, HTML, and CSS.</p>
+    </section>
+    
+    <section id="contact" class="article">
+        <h2>Contact</h2>
+        <p>Feel free to reach out via email or social media.</p>
+    </section>
+    
     <footer class="footer">
-        <p>&copy; 2025 Vaughn WS. All rights reserved.</p>
+        <p>&copy; 2025 Vaughn-WS. All rights reserved.</p>
     </footer>
 </body>
 </html>
