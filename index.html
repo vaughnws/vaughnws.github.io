@@ -36,8 +36,9 @@
         <img class="center" src="Placeholder.jpg" alt="Thyroid Image">
         <div class="article">
           <h2>Thyroid Screener</h2>
-          <p>This is my first attempt to use tensorflow to classify images, it is trained to classify thyroid nodules as either benign or malignant, it was trained on 6000 images. </p>
-          <p>The model used 500 epochs, with a batch size of 16 and a learning rate of 0.001. I used a publicly available dataset from harvard med and a postgresql database to manage patient names and historys, as well as file names.</p>
+          <p>This is my first attempt to use tensorflow to classify images, it is trained to classify thyroid nodules as either benign or malignant, with a small model trained on 3000 images, and a larger version trained on 7000. </p>
+          <p>The small model used 500 epochs, with a batch size of 16 and a learning rate of 0.001, the large model used 1250 epochs. I used a publicly available dataset from harvard med and a postgresql database to manage patient names and historys, as well as file names.
+            with images saved in two separate datasets, one to use as training data, and one to use for testing accuracy of classification</p>
         </div>
     </section>
     </a>
