@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" type="text/css" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playwrite+VN:wght@100..400&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
-    <title>Portfolio</title>
+         <title>Portfolio</title>
 </head>
 <body>
     <header>
@@ -19,7 +19,7 @@
             <ul class="list-item">
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="Classifier.html">Thyroid Scanner</a></li>
-                <li><a href="#about">About</a></li>
+                <li><a href="Shop.html">Shop</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="Old Versions/GITS PAGE/index.html">Old Versions</a></li>
             </ul>
@@ -34,7 +34,7 @@
     <a href="Classifier.html">
     <section id="projects" class="article">
         <img class="center" src="Placeholder.jpg" alt="Thyroid Image">
-        <div class="article">
+            <div class="article">
           <h2>Thyroid Screener</h2>
           <p>This is my first attempt to use tensorflow to classify images, it is trained to classify thyroid nodules as either benign or malignant, with a small model trained on 3000 images, and a larger version trained on 7000. </p>
           <p>The small model used 500 epochs, with a batch size of 16 and a learning rate of 0.001, the large model used 1250 epochs. I used a publicly available dataset from harvard med and a postgresql database to manage patient names and historys, as well as file names.
@@ -51,6 +51,36 @@
     <section id="contact" class="article">
         <h2>Contact</h2>
         <p>Feel free to reach out via email or social media.</p>
+            <fieldset>
+            <legend>Contact Me!</legend>
+                <input type="text" id="name" name="name" required>
+                <label for="name">Name</label>
+            <br>
+            <br>
+                <input type="email" id="email" name="email" required>
+                <label for="email">Email</label>
+            <br>
+            <br>
+                <legend>Message</legend>
+                <textarea id="message" name="message" rows="5" cols="55" required></textarea>
+                <button type="submit">Submit</button>
+
+                <select id="name" name="name required">
+                <option value="John Doe">Email Me Back</option>
+                <option value="Jane Smith">Dont Bother</option> 
+                <option value="Michael Johnson">Other</option>
+                </select>
+            </fieldset>
+
+            <div id="socials"></div>
+            <fieldset>
+                <legend>Social Media</legend>
+                <a href="#"><img src="facebook.png" alt="Facebook"></a>
+                <a href="#"><img src="instagram.png" alt="Instagram"></a>
+                <a href="#"><img src="twitter.png" alt="Twitter"></a>
+            </fieldset>
+
+            <div id="map"></div>
     </section>
     
     <footer class="footer">
