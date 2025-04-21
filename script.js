@@ -23,8 +23,16 @@ function load() {
     // Flavour text
     flavourText();
     setInterval(flavourText, 30000);
+
+    // Start Slideshow
+    startSlideshow();
+
     // Change flavour text
     document.getElementById('hero-text').addEventListener('click', flavourText);
+
+    // Stat hover effect
+    document.querySelectorAll('.stat1').forEach(statSwap);
+    document.querySelectorAll('.stat2').forEach(statSwap);
     
     // Contact form validation
    document.getElementById('submit_button').addEventListener('click', validate);
@@ -33,7 +41,6 @@ function load() {
    // Project listeners
    document.getElementById("project1").addEventListener('click', function() {
         location.href='https://github.com/vaughnws/MethodExplorer';
-
     });
     document.getElementById("project2").addEventListener('click', function() {
         location.href='https://github.com/vaughnws/gradetracker';
@@ -65,6 +72,39 @@ function load() {
     );
 }
 
+
+// thank you TechZ for the jQuery tutorial
+
+function startSlideshow() {
+    // Array of images to display
+    const images = [
+        "/aboutpic/vaughn.png",
+        "/aboutpic/vwithm2.jpg",
+        "/aboutpic/vwithm.png",
+        "/aboutpic/cyber.png"
+    ];
+    
+    let currentIndex = 0;
+    const aboutPicture = $("#about-picture");
+    
+    // Change image every 30 seconds
+    setInterval(function() {
+        currentIndex = (currentIndex + 1) % images.length;
+        aboutPicture.fadeOut(100, function() {
+            aboutPicture.attr("src", images[currentIndex]);
+            aboutPicture.fadeIn(100);
+        });
+    }, 30000);
+
+    // change image on click
+    aboutPicture.on('click', function() {
+        currentIndex = (currentIndex + 1) % images.length;
+        aboutPicture.fadeOut(100, function() {
+            aboutPicture.attr("src", images[currentIndex]);
+            aboutPicture.fadeIn(100);
+    });});
+}
+
 function flavourText() {
     let heroText = document.getElementById('hero-text');
     let heroTextArray = [
@@ -82,7 +122,32 @@ function flavourText() {
     let randomIndex = Math.floor(Math.random() * heroTextArray.length);
     let randomText = heroTextArray[randomIndex];
     heroText.innerHTML = randomText;
-    }
+}
+
+    // Function for hover effect on the stats
+    // Thanks SuperSimpleDev Tutorials
+
+    // Function to handle hover effects
+function statSwap(statElement) {
+    let statNumber = statElement.querySelector('.stat-number');
+    let statLabel = statElement.querySelector('.stat-label');
+    let logosContainer = statElement.querySelector('.logos-container');
+    
+    // mouse enter
+    statElement.addEventListener('mouseenter', () => {
+        statNumber.style.opacity = '0';
+        statLabel.style.opacity = '0';
+        logosContainer.style.opacity = '1';
+    });
+    
+    // mouse leave
+    statElement.addEventListener('mouseleave', () => {
+        statNumber.style.opacity = '1';
+        statLabel.style.opacity = '1';
+        logosContainer.style.opacity = '0';
+    });
+}
+    
 
 function resetForm() {
     let resetButton = document.getElementById('reset_button');
