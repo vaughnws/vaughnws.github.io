@@ -122,7 +122,7 @@ nav ul {
 #about-picture {
     align-items: center;
     width: 300px;
-    height: 300px;
+    max-height: 400px;
     border-radius: 8px;
     object-fit: cover;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -875,6 +875,13 @@ footer {
     .stat {
         min-width: 300px !important;
     }
+
+    #about-picture {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
 }
 
 @media (max-width: 480px) {
