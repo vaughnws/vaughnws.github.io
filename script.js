@@ -103,6 +103,7 @@ function startSlideshow() {
             aboutPicture.attr("src", images[currentIndex]);
             aboutPicture.fadeIn(100);
     });});
+
 }
 
 function flavourText() {
