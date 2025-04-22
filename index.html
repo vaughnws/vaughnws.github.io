@@ -23,6 +23,11 @@
                 <li><a href="#projects" class="nav-link">Projects</a></li>
                 <li><a href="#skills" class="nav-link">Skills</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li class="theme-toggle-li">
+                    <button id="theme-toggle-btn" aria-label="Toggle dark mode" class="nav-link theme-btn">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
             </ul>
         </nav>
         <div class="menu-toggle">
@@ -75,7 +80,7 @@ function <strong>createExperience</strong>() {
             <div class="about-content">
                 <div class="about-text">
                     <p><strong>Hey!</strong></p>
-                    <p>I'm Vaughn, a full stack developer and drone designer with a strong foundation in <strong>design</strong>, <strong>engineering</strong>, and <strong>problem-solving</strong>. I find most success at the crossroads between software and hardware, where building sleek interfaces and writing efficient code meets real-world application and innovation.</p> 
+                    <p>I'm Vaughn, a full stack developer and drone designer with a strong foundation in <strong>design</strong>, <strong>engineering</strong>, and <strong>problem-solving</strong>. I find most success at the crossroads between software and hardware, where building sleek interfaces and writing efficient code meets real-world application.</p> 
                     <p>I work with cutting-edge autonomous drone technology, striving to push performance and reliability forward. Whether I’m designing hardware, fine-tuning front-end interactions, or troubleshooting embedded software, I approach each challenge with a pragmatic mindset.</p> 
                     <p>I’m driven by clean architecture, thoughtful design, and the kind of engineering that doesn’t just work, it lasts.</p>
                     <p></p>
@@ -318,6 +323,11 @@ function <strong>createExperience</strong>() {
                             <div class="contact-detail">
                                 <h3><i class="fas fa-map-marker-alt"></i> Location</h3>
                                 <p>Manitoba, Canada</p>
+                                <div class="map-container" id="map-placeholder">
+                                    <div class="map-empty">
+                                        <p>Click to load map</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -325,7 +335,6 @@ function <strong>createExperience</strong>() {
                         <h3><i class="fas fa-user-plus"></i> Socials</h3>
                         <a href="#" class="social-link"><i class="fab fa-github"></i> GitHub</a>
                         <a href="#" class="social-link"><i class="fa-brands fa-discord"></i> Discord</a>
-    
                     </div>
                 </div>
             </div>

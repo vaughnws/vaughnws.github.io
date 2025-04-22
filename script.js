@@ -30,12 +30,22 @@ function load() {
     // Change flavour text
     document.getElementById('hero-text').addEventListener('click', flavourText);
 
+    // Dark mode toggle
+    setupDarkModeToggle();
+
     // Stat hover effect
     document.querySelectorAll('.stat1').forEach(statSwap);
     document.querySelectorAll('.stat2').forEach(statSwap);
+
+    // Load map
+    document.getElementById('map-placeholder').addEventListener('click', loadMap);
     
     // Contact form validation
-   document.getElementById('submit_button').addEventListener('click', validate);
+    document.getElementById('submit_button').addEventListener('click', function(e) {
+        e.preventDefault();
+        validate();
+    });
+
    document.getElementById("reset_button").addEventListener('click', resetForm);
 
    // Project listeners
@@ -72,6 +82,9 @@ function load() {
     );
 }
 
+function loadMap() {
+    document.getElementById('map-placeholder').innerHTML = '<iframe src="https://maps.google.com/maps?q=Manitoba,Canada&output=embed" width="100%" height="300" style="border:0;"></iframe>';
+}
 
 // thank you TechZ for the jQuery tutorial
 
@@ -105,7 +118,7 @@ function startSlideshow() {
     });});
 
 }
-
+// adds some flavor to the home page
 function flavourText() {
     let heroText = document.getElementById('hero-text');
     let heroTextArray = [
@@ -146,6 +159,31 @@ function statSwap(statElement) {
         statNumber.style.opacity = '1';
         statLabel.style.opacity = '1';
         logosContainer.style.opacity = '0';
+    });
+}
+
+function setupDarkModeToggle() {
+    const toggleBtn = document.getElementById('theme-toggle-btn');
+    const root = document.documentElement;
+    
+    // Set initial state
+    if (root.classList.contains('dark')) {
+        toggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
+    } else {
+        toggleBtn.innerHTML = '<i class="fas fa-moon"></i>';
+    }
+    
+    // Toggle theme when button is clicked
+    toggleBtn.addEventListener('click', function() {
+        // Toggle the dark class
+        root.classList.toggle('dark');
+        
+        // Change the icon based on the current mode
+        if (root.classList.contains('dark')) {
+            toggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
+        } else {
+            toggleBtn.innerHTML = '<i class="fas fa-moon"></i>';
+        }
     });
 }
     
@@ -191,8 +229,13 @@ function validate(e) {
         successMessage.innerHTML = "Your message has been sent successfully!";
         successMessage.style.color = "#28a745"; // Green
         successMessage.style.fontWeight = "bold";
-        
     }
+
+    // wait a second before submiting
+    setTimeout(function() {
+        document.getElementById("contact_form").submit();
+    }, 1500);
+    
     return true;
 }
 
