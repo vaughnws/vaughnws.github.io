@@ -33,6 +33,13 @@ function load() {
     // Dark mode toggle
     setupDarkModeToggle();
 
+    // Github Setup
+    GitHubActivity.feed({
+        username: "vaughnws",
+        selector: "#feed",
+        limit: 3
+      });
+      
     // Stat hover effect
     document.querySelectorAll('.stat1').forEach(statSwap);
     document.querySelectorAll('.stat2').forEach(statSwap);

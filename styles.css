@@ -20,6 +20,21 @@
 
     /* Color Scheme */
     color-scheme: light;
+
+    /* A Very Pretty Transition */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+    /* All Color Changes */
+
+    body, header, .logo-text, nav, .bar, .hero h1, .hero-description,
+    .secondary-button, .code-snippet, .code-snippet pre, .section-header h2,
+    .about, .about-text p, #about-picture, .stat1, .stat2, .project-card,
+    .project-image, .project-info h3, .project-info p, .project-tech span,
+    .skill-category, .skill-category h3, .skill-list li, .contact, .contact-form,
+    .form-group label, .form-group input, .form-group textarea, .contact-detail h3,
+    .contact-detail p, .social-link, .map-empty {
+    transition: all 0.3s ease;
 }
 
 :root.dark {
@@ -159,6 +174,10 @@
     }
     
     /* Skills Section */
+    .skills{
+        background-color: #252525;
+    }
+
     .skill-category {
         background-color: #303030;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
@@ -171,6 +190,74 @@
     .skill-list li {
         color: #d1d1d1;
     }
+
+    /* Github Section */
+
+    .gha-feed {
+        background: #303030;
+        border-color: #414141;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+      
+      .gha-feed li {
+        border-bottom-color: #414141;
+      }
+      
+      .gha-header,
+      .gha-footer {
+        background: #303030;
+        border-color: #414141;
+      }
+      
+      .gha-feed a {
+        color: var(--color-accent);
+      }
+      
+      .gha-feed a:hover {
+        color: var(--color-accent-dark);
+      }
+      
+      .gha-gravatar img {
+        border-color: #414141;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+      
+      .gha-user-info {
+        color: #f1f1f1;
+      }
+      
+      .gha-message-merge {
+        background: #252525;
+        color: #d1d1d1;
+      }
+      
+      .gha-info {
+        background: #252525;
+        border-color: #414141;
+        color: #d1d1d1;
+      }
+      
+      .gha-time, 
+      span.gha-time {
+        color: #a1a1a1;
+      }
+      
+      .gha-sha {
+        background: #252525;
+      }
+      
+      .gha-feed small {
+        color: #d1d1d1;
+      }
+      
+      .gha-github-icon {
+        color: #a1a1a1;
+      }
+      
+      .gha-activity,
+      .gha-repo {
+        border-bottom-color: #414141;
+      }
     
     /* Contact Section */
     .contact {
@@ -754,6 +841,10 @@ section {
 }
 
 /* Skills */
+.skills{
+    background-color: var(--color-gray-100);
+}
+
 .skills-container {
     display: flex;
     flex-wrap: wrap;
@@ -808,6 +899,333 @@ section {
     left: -1rem;
 }
 
+/* Github styles modified from Feed CSS*/
+.github{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.github-activity-container{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
+
+.gha-feed {
+    
+    width: 100%;
+    height: 100%;
+    background: var(--color-white);
+    font-weight: 500;
+    font-size: 14px;
+    font-family: var(--font-family);
+    line-height: 1.6;
+    overflow-y: auto;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.117);
+    border: none;
+  }
+  
+  .gha-feed, .gha-feed h2, .gha-feed h3, .gha-feed li, .gha-feed p, .gha-feed ul {
+    
+    margin: 0;
+    padding: 0;
+  }
+  
+  .gha-feed ul {
+    
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .gha-feed li {
+    
+    list-style-type: none;
+    line-height: 1.6;
+    padding: 0.8rem;
+  }
+  
+  .gha-feed small {
+    color: var(--color-gray-700);
+    font-weight: 400;
+    font-size: 13px;
+  }
+  
+  .gha-feed small a {
+    font-weight: 500;
+  }
+  
+  .gha-feed small a .more-commits {
+    font-size: 12px;
+  }
+  
+  span.gha-time {
+    color: var(--color-gray-500);
+    font-weight: 400;
+    font-size: 12px;
+    margin-left: 8px;
+  }
+  
+  .gha-feed a {
+    
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+  }
+  
+  .gha-feed a:hover {
+    color: var(--color-accent-dark);
+  }
+  
+  .gha-feed pre {
+    padding: 1rem;
+    border: 0;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    color: var(--color-white);
+    background-color: var(--color-gray-900);
+    font-family: monospace;
+    margin: 1rem 0;
+  }
+  
+  .gha-header {
+    width: 100%;
+    padding: 1rem;
+    height: auto;
+    border-bottom: 1px solid var(--color-gray-200);
+    background: var(--color-white);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6%;
+  }
+  
+  .gha-footer {
+    bottom: 0;
+    left: 0;
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--color-gray-200);
+    height: auto;
+    width: 100%;
+    background: var(--color-white);
+    color: var(--color-gray-700);
+    font-size: 13px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .gha-footer a, .gha-header a {
+    color: var(--color-accent);
+
+    font-weight: 600;
+    transition: color 0.2s ease;
+    display: inline-block;
+  }
+  
+  .gha-footer a:hover, .gha-header a:hover {
+    color: var(--color-accent-dark);
+  }
+  
+  .gha-github-icon {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0.5rem;
+    width: 35px;
+    height: 35px;
+    color: var(--color-gray-800);
+  }
+  
+  .gha-github-icon .octicon {
+    
+    padding-left: 1rem;
+    font-size: 50px;
+  }
+  
+  .gha-gravatar {
+
+    margin-left: auto;
+    max-width: 70px;
+    height: auto;
+  }
+  
+  .gha-gravatar img {
+
+    margin-left: auto;
+    width: 100%;
+    border: 1px solid var(--color-gray-200);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+  
+  .gha-gravatar img:hover {
+    transform: scale(1.15);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.269);
+  }
+  
+  .gha-activity {
+    clear: both;
+    padding: 1rem;
+    width: 100%;
+    border-bottom: 1px solid var(--color-gray-200);
+  }
+  
+  .gha-activity.gha-small {
+    font-weight: 400;
+    font-size: 13px;
+    padding: 1rem 1.5rem;
+  }
+  
+  .gha-activity.gha-small a {
+    font-weight: 500;
+  }
+  
+  .gha-activity.gha-small span {
+    font-size: 16px;
+  }
+  
+  .gha-activity:last-child {
+    padding-bottom: 60px;
+  }
+  
+  .gha-repo {
+    clear: both;
+    padding: 1.5rem;
+    width: 100%;
+    border-bottom: 1px solid var(--color-gray-200);
+    transition: background-color 0.3s ease;
+  }
+  
+  .gha-repo:hover {
+    background-color: var(--color-gray-100);
+  }
+  
+  .gha-activity-icon .octicon {
+    display: inline-flex;
+    justify-content: center;
+    margin: 0 15px 0 0;
+    width: 30px;
+    color: var(--color-accent);
+    text-align: center;
+    font-size: 24px;
+  }
+  
+  .gha-activity-icon .gha-small {
+    font-size: 16px;
+  }
+  
+  .gha-message {
+    display: inline-block;
+    width: calc(100% - 45px);
+  }
+  
+  .gha-message-commits {
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  
+  .gha-message-merge {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    background: var(--color-gray-100);
+    color: var(--color-gray-800);
+    font-size: 12px;
+    line-height: 1.8;
+    display: inline-block;
+    margin-top: 5px;
+  }
+  
+  .gha-sha {
+    font-size: 12px;
+    font-family: monospace;
+    background: var(--color-gray-100);
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: var(--color-accent);
+  }
+  
+  .gha-gravatar-small {
+    float: left;
+    margin-right: 10px;
+    width: 30px;
+  }
+  
+  .gha-gravatar-commit {
+    margin-bottom: -3px;
+    border-radius: 4px;
+  }
+  
+  .gha-gravatar-user {
+    float: left;
+  }
+  
+  .gha-user-info {
+    display: block;
+    color: white;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .gha-user-info a {
+    color: var(--color-accent);
+  }
+  
+  .gha-user-info p a {
+    font-weight: 500;
+  }
+  
+  .gha-without-name {
+    padding-top: 20px;
+    padding-left: 15px;
+  }
+  
+  .gha-info {
+    margin: 15px;
+    padding: 1rem 1.5rem;
+    border: 1px solid var(--color-gray-200);
+    border-radius: 8px;
+    background: var(--color-gray-100);
+    color: var(--color-gray-700);
+    font-weight: 400;
+    font-size: 13px;
+  }
+  
+  .gha-time {
+    color: var(--color-gray-500);
+    font-weight: 400;
+    font-size: 12px;
+  }
+  
+  .gha-clear {
+    clear: both;
+  }
+  
+  .gha-muted {
+    color: var(--color-gray-700);
+  }
+  
+  .gha-push {
+    height: auto;
+    min-height: 0px;
+  }
+  
+  .gha-push-small {
+    height: auto;
+    min-height: 0px;
+  }
+  
 /* Contact */
 .contact {
     background-color: var(--color-gray-100);
@@ -1189,6 +1607,11 @@ footer {
 }
 
 @media (max-width: 480px) {
+
+    .theme-toggle-li {
+        display: none;
+    }
+
     section {
         padding: 4rem 5%;
     }
