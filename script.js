@@ -50,9 +50,44 @@ function load() {
     
     // Contact form validation
     document.getElementById('submit_button').addEventListener('click', function(e) {
+
+        const SECRETKEY = [
+            "aHR0cHM6Ly9zY3JpcHQuZ29vZ2xlLmNvbS9tYWNyb3Mvcy8=", 
+            "QUtmeWNiemJwNi1NTDlpUl8tZEFHSW1pbUdoTWlRbzhL", 
+            "LXY5WW9KSlB0NkVWVzF2RF9JME91anJUakdBR3lza1d1RG9Cd0NI",
+            "L2V4ZWM="
+        ];
+
+        let url = decodeEndpoint(SECRETKEY);
+        let form = document.getElementById('contact_form');
+
         e.preventDefault();
         validate();
-    });
+        let data = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            phone: document.getElementById('phone').value,
+            subject: document.getElementById('subject').value,
+            message: document.getElementById('message').value
+        };
+        // Check for logging data
+        console.log(data);
+
+        // Do Fetch for form to Google sheet
+        fetch(url, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(() => {
+            document.getElementById('contact_form').reset();
+            console.log('Form submitted successfully');
+        })
+          .catch((err) => console.log('Error: ', err));
+      });
 
    document.getElementById("reset_button").addEventListener('click', resetForm);
 
@@ -289,6 +324,11 @@ function validateName() {
     
     // Return false if no errors were found
     return false;
+}
+
+    // B64 Decode, thx google
+function decodeEndpoint(parts) {
+    return parts.map(p => atob(p)).join('');
 }
 
     // Validates the subject field
