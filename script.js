@@ -51,6 +51,8 @@ function load() {
     // Contact form validation
     document.getElementById('submit_button').addEventListener('click', function(e) {
 
+
+        // Encoded Key
         const SECRETKEY = [
             "aHR0cHM6Ly9zY3JpcHQuZ29vZ2xlLmNvbS9tYWNyb3Mvcy8=", 
             "QUtmeWNiemJwNi1NTDlpUl8tZEFHSW1pbUdoTWlRbzhL", 
@@ -326,7 +328,7 @@ function validateName() {
     return false;
 }
 
-    // B64 Decode, thx google
+    // special Decode, thx google
 function decodeEndpoint(parts) {
     return parts.map(p => atob(p)).join('');
 }
