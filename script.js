@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', load);
 
+// Initializes the page
 function load() {
     // Mobile navigation toggle
     const menuToggle = document.querySelector('.menu-toggle');
@@ -56,7 +57,7 @@ function load() {
    document.getElementById("reset_button").addEventListener('click', resetForm);
 
    // Project listeners
-   document.getElementById("project1").addEventListener('click', function() {
+    document.getElementById("project1").addEventListener('click', function() {
         location.href='https://github.com/vaughnws/MethodExplorer';
     });
     document.getElementById("project2").addEventListener('click', function() {
@@ -169,6 +170,7 @@ function statSwap(statElement) {
     });
 }
 
+    // Creates the dark mode toggle button
 function setupDarkModeToggle() {
     const toggleBtn = document.getElementById('theme-toggle-btn');
     const root = document.documentElement;
@@ -194,7 +196,7 @@ function setupDarkModeToggle() {
     });
 }
     
-
+// Resets the form to be empty
 function resetForm() {
     let resetButton = document.getElementById('reset_button');
             // Hide all error messages
@@ -212,6 +214,7 @@ function resetForm() {
                 successMessage.innerHTML = "";
         }
 
+        // Validates the form
 function validate(e) {
     // Hide all error messages before validation
     hideErrors();
@@ -246,6 +249,7 @@ function validate(e) {
     return true;
 }
 
+    // Checks if the form has any errors
 function formHasErrors() {
     // Hide all error messages before validation
     hideErrors();
@@ -266,6 +270,7 @@ function formHasErrors() {
     return false;
 }
 
+    // Validates the name field
 function validateName() {
     let nameField = document.getElementById("name");
     
@@ -286,6 +291,7 @@ function validateName() {
     return false;
 }
 
+    // Validates the subject field
 function validateSubject() {
     let subjectField = document.getElementById("subject");
     
@@ -306,6 +312,7 @@ function validateSubject() {
     return false;
 }
 
+    // Validates the message field
 function validateMessage() {
     let messageField = document.getElementById("message");
     
@@ -326,7 +333,7 @@ function validateMessage() {
     return false;
 }
 
-
+    // Validates the email format
 function validateEmailFormat() {
 	let emailField = document.getElementById("email");
 
@@ -353,7 +360,7 @@ function validateEmailFormat() {
 	return false;
 }
 
-
+    // Validates the phone format
 function validatePhoneFormat() {
     let phoneField = document.getElementById("phone");
     let phoneRegex = /^\d{3}[-\s]?\d{3}[-\s]?\d{4}$/;
@@ -378,7 +385,7 @@ function validatePhoneFormat() {
 }
 
 
-
+    // Hides all error messages
 function hideErrors() {
     // Get an array of error elements
     let error = document.getElementsByClassName("error");
@@ -390,6 +397,7 @@ function hideErrors() {
     }
 }
 
+    // Trims whitespace from the beginning and end of a string
 function trim(value) {
     return value.replace(/^\s+|\s+$/g, '');
 }
