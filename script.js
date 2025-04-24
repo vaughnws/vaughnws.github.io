@@ -157,7 +157,8 @@ function startSlideshow() {
         "/aboutpic/vaughn.png",
         "/aboutpic/vwithm2.jpg",
         "/aboutpic/vwithm.png",
-        "/aboutpic/cyber.png"
+        "/aboutpic/cyber.png",
+        "/aboutpic/couple.png",
     ];
     
     let currentIndex = 0;
