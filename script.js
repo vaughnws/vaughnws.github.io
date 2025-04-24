@@ -21,6 +21,7 @@ function load() {
             nav.classList.remove('active');
         });
     });
+
     // Flavour text
     flavourText();
     setInterval(flavourText, 30000);
@@ -44,6 +45,21 @@ function load() {
     // Stat hover effect
     document.querySelectorAll('.stat1').forEach(statSwap);
     document.querySelectorAll('.stat2').forEach(statSwap);
+
+    // Home buttons
+    document.getElementById('home-button').addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    document.getElementById('footer-button').addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
 
     // Load map
     document.getElementById('map-placeholder').addEventListener('click', loadMap);
@@ -91,6 +107,7 @@ function load() {
           .catch((err) => console.log('Error: ', err));
       });
 
+    // Reset button
    document.getElementById("reset_button").addEventListener('click', resetForm);
 
    // Project listeners
@@ -125,6 +142,7 @@ function load() {
         '%c- Vaughn WS',
         'font-size: 14px; font-style: italic; color:rgb(255, 255, 255);'
     );
+
 }
 
 function loadMap() {

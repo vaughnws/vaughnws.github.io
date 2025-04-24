@@ -370,6 +370,7 @@ header {
     font-weight: 700;
     color: var(--color-gray-900);
     position: relative;
+    cursor: pointer;
 }
 
 .logo-text::after {
@@ -1385,6 +1386,7 @@ footer {
 
 .footer-logo .logo-text {
     color: var(--color-white);
+    cursor: pointer;
 }
 
 .footer-text {

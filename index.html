@@ -13,13 +13,13 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/4.1.0/mustache.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://unpkg.com/github-activity-feed@latest/dist/github-activity.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/vaughnws/github-activity@master/src/github-activity.js"></script>
     
  
 </head>
 <body>
     <header>
-        <div class="logo">
+        <div class="logo" id="home-button">
             <div class="logo-text">VWS</div>
         </div>
         <nav>
@@ -60,7 +60,7 @@
             </div>
             <div class="hero-visual">
                 <div class="code-snippet">
-                    <pre><code>
+                    <pre tabindex="0"><code>
 function <strong>createExperience</strong>() {
   const <strong>FrontEndSkills</strong> = ['HTML', 'CSS', 'JavaScript'];
   const <strong>BackEndSkills</strong> = ['PostgreSQL', 'Java', 'Python'];
@@ -297,6 +297,12 @@ function <strong>createExperience</strong>() {
             </div>
             <div class="contact-content">
                 <div class="contact-form-container">
+                        <!--
+                        Im Using fetch in my javascript to handle the post method, thats why the method="" is empty, and the action is set to #home
+                        I am not using a backend server to handle the form submission
+                        This is because Github pages does not support php or server-side scripting
+                        Im using a Google Sheets Script I wrote for my work to handle the form submission by having the post request come from the client side.
+                        -->
                     <form class="contact-form" id="contact_form" action="#home">     
                         <div class="form-group">
                             <label for="name">Name</label>
@@ -362,7 +368,7 @@ function <strong>createExperience</strong>() {
 
     <footer>
         <div class="footer-content">
-            <div class="footer-logo">
+            <div class="footer-logo" id="footer-button">
                 <div class="logo-text">VWS</div>
             </div>
             <div class="footer-text">
