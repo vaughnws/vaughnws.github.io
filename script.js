@@ -27,6 +27,7 @@ function load() {
     setInterval(flavourText, 30000);
 
     // Create color pickr
+    loadColors();
     document.getElementById('color-picker-li').addEventListener('click', createColorPicker);
 
     // Start Slideshow
@@ -372,6 +373,18 @@ function loadSavedColors() {
     
     if (savedAccentColor && savedAccentDarkColor && savedAccentLighterColor) {
         updateAccentColors(savedAccentColor, savedAccentDarkColor, savedAccentLighterColor);
+    }
+}
+
+// Load colors on page load
+function loadColors() {
+    // Load saved colors from localStorage
+        const savedAccentColor = localStorage.getItem('saved-accent-color');
+        const savedAccentDarkColor = localStorage.getItem('saved-accent-dark-color');
+        const savedAccentLighterColor = localStorage.getItem('saved-accent-light-color');
+
+        if (savedAccentColor && savedAccentDarkColor && savedAccentLighterColor) {
+    createColorPicker();
     }
 }
     
