@@ -26,6 +26,9 @@ function load() {
     flavourText();
     setInterval(flavourText, 30000);
 
+    // Create color pickr
+    document.getElementById('color-picker-li').addEventListener('click', createColorPicker);
+
     // Start Slideshow
     startSlideshow();
 
@@ -146,7 +149,7 @@ function load() {
 }
 
 function loadMap() {
-    document.getElementById('map-placeholder').innerHTML = '<iframe src="https://maps.google.com/maps?q=Manitoba,Canada&output=embed" width="100%" height="300" style="border:0;"></iframe>';
+    document.getElementById('map-placeholder').innerHTML = '<iframe src="https://maps.google.com/maps?q=Manitoba,Canada&output=embed" class="map-block" width="100%" height="300" style="border:0;"></iframe>';
 }
 
 // thank you TechZ for the jQuery tutorial
@@ -227,29 +230,147 @@ function statSwap(statElement) {
 }
 
     // Creates the dark mode toggle button
-function setupDarkModeToggle() {
-    const toggleBtn = document.getElementById('theme-toggle-btn');
-    const root = document.documentElement;
-    
-    // Set initial state
-    if (root.classList.contains('dark')) {
-        toggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
-    } else {
-        toggleBtn.innerHTML = '<i class="fas fa-moon"></i>';
-    }
-    
-    // Toggle theme when button is clicked
-    toggleBtn.addEventListener('click', function() {
-        // Toggle the dark class
-        root.classList.toggle('dark');
+    function setupDarkModeToggle() {
+        const toggleBtn = document.getElementById('theme-toggle-btn');
+        const root = document.documentElement;
         
-        // Change the icon based on the current mode
-        if (root.classList.contains('dark')) {
+        // Check if there's a saved preference in localStorage
+        const savedTheme = localStorage.getItem('theme');
+        
+        // Apply saved theme or use default
+        if (savedTheme === 'dark') {
+            root.classList.add('dark');
             toggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
         } else {
+            root.classList.remove('dark');
             toggleBtn.innerHTML = '<i class="fas fa-moon"></i>';
         }
-    });
+        
+        // Toggle theme when button is clicked
+        toggleBtn.addEventListener('click', function() {
+            // Toggle the dark class
+            root.classList.toggle('dark');
+            
+            // Save preference to localStorage
+            if (root.classList.contains('dark')) {
+                localStorage.setItem('theme', 'dark');
+                toggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                localStorage.setItem('theme', 'light');
+                toggleBtn.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        });
+    }
+
+    // Secret Color Picker
+function createColorPicker() {
+    loadSavedColors();
+    
+    if (typeof Pickr !== 'undefined') {
+
+        const pickr = Pickr.create({
+            el: '#color-picker',
+            theme: 'nano',
+            default: getComputedStyle(document.documentElement).getPropertyValue('--color-accent').trim(),
+            swatches: [
+                'rgb(255, 107, 53)',    // Sunset Orange
+                'rgb(46, 204, 112)',    
+                'rgb(52, 152, 219)',    
+                'rgb(156, 89, 182)',    
+                'rgb(241, 196, 15)',    
+                'rgb(231, 77, 60)'      
+            ],
+            components: {
+                preview: true,
+                opacity: true,
+                hue: true,
+                interaction: {
+                    hex: true,
+                    rgba: true,
+                    hsla: false,
+                    hsva: false,
+                    cmyk: false,
+                    input: true,
+                    clear: false,
+                    save: true
+                }
+            }
+        });
+
+        pickr.on('init', instance => {
+            console.log("Pickr loaded");
+
+        }).on('show', instance => {
+            console.log("Pickr shown");
+
+        }).on('save', (color, instance) => {
+            const colorValue = color.toRGBA().toString(0);
+            const darkerColor = createDarkerColor(color.toRGBA());
+            const lighterColor = createLighterColor(color.toRGBA());
+
+            updateAccentColors(colorValue, darkerColor, lighterColor);
+            saveColorsToLocalStorage(colorValue, darkerColor, lighterColor);
+            instance.hide();
+
+        }).on('change', (color, source, instance) => {
+            const colorValue = color.toRGBA().toString(0);
+            const darkerColor = createDarkerColor(color.toRGBA());
+            const lighterColor = createLighterColor(color.toRGBA());
+
+            updateAccentColors(colorValue, darkerColor, lighterColor);
+
+        }).on('swatchselect', (color, instance) => {
+            const colorValue = color.toRGBA().toString(0);
+            const darkerColor = createDarkerColor(color.toRGBA());
+            const lighterColor = createLighterColor(color.toRGBA());
+            
+            updateAccentColors(colorValue, darkerColor, lighterColor);
+        });
+    }
+}
+
+// Create Dark accent
+function createDarkerColor(rgba) {
+    const darkerR = Math.max(0, rgba[0] - 40);
+    const darkerG = Math.max(0, rgba[1] - 40);
+    const darkerB = Math.max(0, rgba[2] - 40);
+    
+    return `rgba(${darkerR}, ${darkerG}, ${darkerB}, ${rgba[3]})`;
+}
+
+// Create Lighter color
+function createLighterColor(rgba) {
+    const lighterR = Math.min(255, rgba[0] + 40);
+    const lighterG = Math.min(255, rgba[1] + 40);
+    const lighterB = Math.min(255, rgba[2] + 40);
+    
+    return `rgba(${lighterR}, ${lighterG}, ${lighterB}, ${rgba[3]})`;
+}
+
+// Update CSS
+function updateAccentColors(accentColor, accentDarkColor, lighterColor) {
+    document.documentElement.style.setProperty('--color-accent', accentColor);
+    document.documentElement.style.setProperty('--color-accent-dark', accentDarkColor);
+    document.documentElement.style.setProperty('--color-accent-light', lighterColor);
+}
+
+// Save colors
+function saveColorsToLocalStorage(accentColor, accentDarkColor, lighterColor) {
+    localStorage.setItem('saved-accent-color', accentColor);
+    localStorage.setItem('saved-accent-dark-color', accentDarkColor);
+    localStorage.setItem('saved-accent-light-color', lighterColor);
+    console.log('Colors saved');
+}
+
+// Load saved colors
+function loadSavedColors() {
+    const savedAccentColor = localStorage.getItem('saved-accent-color');
+    const savedAccentDarkColor = localStorage.getItem('saved-accent-dark-color');
+    const savedAccentLighterColor = localStorage.getItem('saved-accent-light-color');
+    
+    if (savedAccentColor && savedAccentDarkColor && savedAccentLighterColor) {
+        updateAccentColors(savedAccentColor, savedAccentDarkColor, savedAccentLighterColor);
+    }
 }
     
 // Resets the form to be empty
@@ -445,7 +566,6 @@ function validatePhoneFormat() {
     return false;
 }
 
-
     // Hides all error messages
 function hideErrors() {
     // Get an array of error elements
@@ -462,3 +582,4 @@ function hideErrors() {
 function trim(value) {
     return value.replace(/^\s+|\s+$/g, '');
 }
+

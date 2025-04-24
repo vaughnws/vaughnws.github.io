@@ -8,14 +8,15 @@
     <link rel="stylesheet" href="https://unpkg.com/octicons@4.4.0/build/font/octicons.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/nano.min.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/4.1.0/mustache.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/vaughnws/github-activity@master/src/github-activity.js"></script>
-    
- 
+    <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
+
 </head>
 <body>
     <header>
@@ -29,6 +30,13 @@
                 <li><a href="#skills" class="nav-link">Skills</a></li>
                 <li><a href="#github" class="nav-link">GitHub</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li class="color-picker-li" id="color-picker-li">
+                    <div class="color-picker-container">
+                        <button id="color-picker" aria-label="Change accent color" class="color-btn">
+                            <i class="fas fa-palette"></i>
+                        </button>
+                    </div>
+                </li>
                 <li class="theme-toggle-li">
                     <button id="theme-toggle-btn" aria-label="Toggle dark mode" class="nav-link theme-btn">
                         <i class="fas fa-moon"></i>
@@ -303,10 +311,10 @@ function <strong>createExperience</strong>() {
                         This is because Github pages does not support php or server-side scripting
                         Im using a Google Sheets Script I wrote for my work to handle the form submission by having the post request come from the client side.
                         -->
-                    <form class="contact-form" id="contact_form" action="#home">     
+                    <form class="contact-form" id="contact_form" action="index.html">     
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" id="name">
+                            <input type="text" id="name" placeholder="John Doe">
                             <span id="name_error" class="error">Please enter your name</span>
                         </div>
                         <div class="form-group">
@@ -358,8 +366,8 @@ function <strong>createExperience</strong>() {
                     </div>
                     <div class="social-links">
                         <h3><i class="fas fa-user-plus"></i> Socials</h3>
-                        <a href="#" class="social-link"><i class="fab fa-github"></i> GitHub</a>
-                        <a href="#" class="social-link"><i class="fa-brands fa-discord"></i> Discord</a>
+                        <a href="https://github.com/vaughnws" class="social-link"><i class="fab fa-github"></i> GitHub</a>
+                        <a href="https://discord.gg/gKWMqFGPpa" class="social-link"><i class="fa-brands fa-discord"></i> Discord</a>
                     </div>
                 </div>
             </div>
@@ -373,7 +381,7 @@ function <strong>createExperience</strong>() {
             </div>
             <div class="footer-text">
                 <p>&copy; 2025 Vaughn WS.</p>
-                <p>Made with the help of TheaterJS, W3Schools, and supersimpledev.</p>
+                <p>Made with the help of TheaterJS, W3Schools, FontAwesome, jQuery, and supersimpledev.</p>
             </div>
             <div class="footer-nav">
                 <ul>

@@ -12,8 +12,10 @@
     --color-gray-800: #414141;
     --color-gray-900: #212121;
     --color-black: #111111;
-    --color-accent: #005501; /* Revert to Sunset Orange After Project*/
+    --color-accent: #005501; /* Sunset Orange After Project */
     --color-accent-dark: #0c3600;
+    --color-accent-light: #b2fdac;
+
     
     /* Font */
     --font-family: 'Space Grotesk', sans-serif;
@@ -23,21 +25,37 @@
 
     /* A Very Pretty Transition */
     transition: background-color 0.3s ease, color 0.3s ease;
+    --pickr-opacity: 1;
 }
-
-    /* All Color Changes */
-
+                    
+    /* Transition for all elements */
     body, header, .logo-text, nav, .bar, .hero h1, .hero-description,
     .secondary-button, .code-snippet, .code-snippet pre, .section-header h2,
     .about, .about-text p, #about-picture, .stat1, .stat2, .project-card,
     .project-image, .project-info h3, .project-info p, .project-tech span,
     .skill-category, .skill-category h3, .skill-list li, .contact, .contact-form,
     .form-group label, .form-group input, .form-group textarea, .contact-detail h3,
-    .contact-detail p, .social-link, .map-empty {
+    .contact-detail p, .social-link, .map-empty, .map-block {
     transition: all 0.3s ease;
 }
 
 :root.dark {
+              
+    --color-white: #ffffff;
+    --color-off-white: #f8f8f8;
+    --color-gray-100: #f1f1f1;
+    --color-gray-200: #e1e1e1;
+    --color-gray-300: #d1d1d1;
+    --color-gray-500: #a1a1a1;
+    --color-gray-700: #616161;
+    --color-gray-800: #414141;
+    --color-gray-900: #212121;
+    --color-black: #111111;
+    --color-accent: #0b830d;
+    --color-accent-dark: #0c3600;
+    --color-accent-light: #b2fdac;
+    --font-family: 'Space Grotesk', sans-serif;
+
     color-scheme: dark;
 
     /* Basic elements */
@@ -65,11 +83,19 @@
     }
 
     .typewriter p{
-        color: #b2fdac;
+        color: var(--color-accent);
     }
     
     .bar {
         background-color: #f1f1f1;
+    }
+
+    .color-btn {
+        color: #d1d1d1;
+    }
+    
+    .color-btn:hover {
+        color: var(--color-accent);
     }
     
     /* For mobile menu */
@@ -146,7 +172,7 @@
     .stat-number {
     font-size: 2.5rem;
     font-weight: 700;
-    color: rgb(170, 255, 170);
+    color: var(--color-accent-light);
     line-height: 1;
     margin-bottom: 0.5rem;
     transition: opacity 0.5s ease; 
@@ -178,7 +204,7 @@
     }
 
     .project-link {
-        color: rgb(199, 254, 226);
+        color: var(--color-accent-light);
         font-weight: 500;
     }
     
@@ -228,7 +254,7 @@
       }
       
       .gha-feed a {
-        color: rgb(201, 255, 228);
+        color: var(--color-accent-light);
       }
       
       .gha-feed a:hover {
@@ -278,7 +304,7 @@
       }
 
       .gha-footer{
-        color: rgb(197, 255, 226);
+        color: var(--color-accent-light);
       }
     
     /* Contact Section */
@@ -323,19 +349,20 @@
         background-color: #1a1a1a;
         color: #6a6a6a;
     }
+
+    .map-block{
+        filter: grayscale(70%) invert(0.9) hue-rotate(180deg) contrast(0.8);
+    }
     
-    /* Error Messages - keep them red for visibility */
     .error {
         color: #ff6b6b;
     }
     
-    /* Success Message */
     #success_message {
         background-color: rgba(40, 167, 69, 0.2);
         border-color: #28a745;
     }
     
-    /* Footer - already dark, just adjust a few colors */
     .footer-nav a {
         color: #a1a1a1;
     }
@@ -343,7 +370,7 @@
     .footer-text {
         color: #d1d1d1;
     }
-  }
+}
 
 * {
     margin: 0;
@@ -421,6 +448,10 @@ nav ul {
     color: var(--color-accent);
 }
 
+.pcr-button{
+    opacity: var(--pickr-opacity);
+}
+
 .menu-toggle {
     display: none;
     cursor: pointer;
@@ -469,6 +500,36 @@ nav ul {
     font-size: 1.1rem;
     display: flex;
     align-items: center;
+}
+
+.color-picker-li {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.color-picker-container {
+    position: relative;
+}
+
+#color-picker {
+    cursor: pointer;
+}
+
+.color-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    color: var(--color-gray-700) !important;
+    transition: color 0.2s ease;
+}
+
+.color-btn:hover {
+    color: var(--color-accent);
 }
 
 /* Hero */
@@ -599,7 +660,7 @@ code{
     font-size: 1rem;
 }
 code strong{
-    color: rgb(169, 211, 172);
+    color: var(--color-accent-light);
 }
 
 .code-snippet {
