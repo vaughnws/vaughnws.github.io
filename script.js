@@ -272,6 +272,8 @@ function createColorPicker() {
             el: '#color-picker',
             theme: 'nano',
             default: getComputedStyle(document.documentElement).getPropertyValue('--color-accent').trim(),
+            autoReposition: false,
+            position: 'right-end',
             swatches: [
                 'rgb(255, 107, 53)',    // Sunset Orange
                 'rgb(46, 204, 112)',    
