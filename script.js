@@ -28,7 +28,13 @@ function load() {
 
     // Create color pickr
     loadColors();
-    document.getElementById('color-picker-li').addEventListener('click', createColorPicker);
+    document.getElementById('color-picker-li').addEventListener('click', function(){
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+        createColorPicker();
+    });
 
     // Start Slideshow
     startSlideshow();
