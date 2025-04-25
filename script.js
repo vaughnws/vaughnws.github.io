@@ -139,7 +139,7 @@ function load() {
         'font-size: 20px; font-weight: bold; color: #ff6b35;'
     );
     console.log(
-        '%cThanks for checking out my portfolio!',
+        '%cThanks for checking out my portfolio, as of right now ive spent: 37 Hours working on it !',
         'font-size: 14px; color:rgb(186, 186, 186);'
     );
     console.log(
@@ -301,10 +301,8 @@ function createColorPicker() {
         });
 
         pickr.on('init', instance => {
-            console.log("Pickr loaded");
 
         }).on('show', instance => {
-            console.log("Pickr shown");
 
         }).on('save', (color, instance) => {
             const colorValue = color.toRGBA().toString(0);
