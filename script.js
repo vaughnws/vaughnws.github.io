@@ -41,6 +41,7 @@ function load() {
 
     // Change flavour text
     document.getElementById('hero-text').addEventListener('click', flavourText);
+    swapCodeBlock();
 
     // Dark mode toggle
     setupDarkModeToggle();
@@ -92,11 +93,11 @@ function load() {
         e.preventDefault();
         validate();
         let data = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            phone: document.getElementById('phone').value,
-            subject: document.getElementById('subject').value,
-            message: document.getElementById('message').value
+            name: sanitizeInput(document.getElementById('name').value),
+            email: sanitizeInput(document.getElementById('email').value),
+            phone: sanitizeInput(document.getElementById('phone').value),
+            subject: sanitizeInput(document.getElementById('subject').value),
+            message: sanitizeInput(document.getElementById('message').value)
         };
         // Check for logging data
         console.log(data);
@@ -234,6 +235,124 @@ function statSwap(statElement) {
         statLabel.style.opacity = '1';
         logosContainer.style.opacity = '0';
     });
+}
+    // Function to swap code blocks
+function swapCodeBlock() {
+    const codeSnippets = [
+        {
+            language: 'JavaScript',
+            code: `function <strong>createExperience</strong>() {
+  const <strong>FrontEndSkills</strong> = ['HTML', 'CSS', 'JavaScript'];
+  const <strong>BackEndSkills</strong> = ['PostgreSQL', 'Java', 'Python'];
+  const <strong>Other_Skills</strong> = ['CAD', 'Systems_Integration', 'ARDUpilot'];
+  let <strong>passion</strong> = 'Solving problems with technology';
+  
+  return {
+    <strong>developer</strong>: 'Vaughn WS',
+    <strong>mission</strong>: 'Making your ideas real',
+    <strong>connect</strong>: () => "Let's build something"
+  };
+}`
+        },
+        {
+            language: 'CSS',
+            code: `   <strong>.Vaughn-WS</strong> {
+        display: <strong>flex</strong>;
+        position: <strong>full stack</strong>;
+        approach: <strong>pragmatic</strong>;
+        response-time: <strong>rapid</strong>;
+        transform: translate(<strong>ideas, reality</strong>);
+    }
+
+    <strong>#frontend, #backend, #hardware</strong> {
+        integration: <strong>seamless</strong>;
+        architecture: <strong>clean</strong>;
+        experience: <strong>50+ projects</strong>;
+        align-items: <strong>efficient-solutions</strong>;
+    }`
+        },
+        {
+            language: 'Java',
+            code: `public class <strong>Full_Stack_Dev</strong> {
+  public static void <strong>buildSystems</strong>() {
+    final String[] <strong>expertise</strong> = {"Frontend", "Backend", "Hardware"};
+    final String[] <strong>projects</strong> = {"Drones", "Applications", "Interfaces"};
+    final String[] <strong>values</strong> = {"Quality", "Reliability", "Efficiency"};
+    String <strong>drive</strong> = "Solving real-world problems";
+    
+    return new <strong>Professional</strong>() {
+      <strong>name</strong> = "Vaughn WS",
+      <strong>role</strong> = "Full Stack Developer",
+      <strong>invitation</strong> = () -> "Let's Make Something"
+    };
+  }
+}`
+        },
+        {
+            language: 'SQL',
+            code: `CREATE VIEW <strong>VaughnDeveloperProfile</strong> AS
+
+SELECT * FROM <strong>developers</strong>
+WHERE name = 'Vaughn WS'
+AND role = 'Full Stack Developer'
+
+JOIN <strong>skills</strong> ON <strong>skills</strong>.type IN ('Frontend', 'Backend', 'Hardware')
+JOIN <strong>projects</strong> ON <strong>projects</strong>.count > 50
+JOIN <strong>clients</strong> ON <strong>clients</strong>.satisfaction = 'High'
+
+GROUP BY <strong>experience</strong>
+HAVING <strong>experience</strong> CONTAINS ('Drones', 'System Integration', 'ARDUpilot');`
+        },
+        {
+            language: 'Python',
+            code: `def <strong>buildExperience</strong>():
+    <strong>domains</strong> = ['Software', 'Hardware', 'Integration']
+    <strong>specialties</strong> = ['Integrated Systems', 'Web Design', 'User Interfaces']
+    <strong>foundational_skills</strong> = ['Design', 'Development', 'Problem-Solving']
+    <strong>mindset</strong> = 'Efficient solutions to complex problems'
+    
+    return {
+        <strong>developer</strong>: 'Vaughn WS',
+        <strong>identity</strong>: 'Full Stack Developer',
+        <strong>invitation</strong>: "Let's Make Something"
+    }`
+        }
+    ];
+
+    // Add a language indicator element
+    const codeSnippetWrapper = document.querySelector('.code-snippet');
+    const languageIndicator = document.createElement('div');
+    languageIndicator.className = 'language-indicator';
+    languageIndicator.innerHTML = codeSnippets[0].language;
+    codeSnippetWrapper.prepend(languageIndicator);
+
+    let currentSnippet = 0;
+    const codeElement = document.querySelector('.code-snippet pre code');
+    
+    // Set initial code
+    codeElement.innerHTML = codeSnippets[0].code;
+    
+    // Change code with fade effect
+    function changeCode() {
+        codeElement.style.opacity = 0;
+        
+        setTimeout(() => {
+            // Move to next snippet
+            currentSnippet = (currentSnippet + 1) % codeSnippets.length;
+            
+            languageIndicator.textContent = codeSnippets[currentSnippet].language;
+            
+            codeElement.innerHTML = codeSnippets[currentSnippet].code;
+            
+            codeElement.style.opacity = 1;
+            
+            
+            setTimeout(changeCode, 10000); 
+        }, 500); 
+    }
+    
+    // Start the swaps
+    setTimeout(changeCode, 10000);
 }
 
     // Creates the dark mode toggle button
@@ -449,7 +568,9 @@ function validate(e) {
 function formHasErrors() {
     // Hide all error messages before validation
     hideErrors();
-    
+
+    if (validateNoScript()) return true;
+    console.log("No scripting validated");
     if (validateName()) return true;
     console.log("Name validated");
     if (validateEmailFormat()) return true;
@@ -602,3 +723,23 @@ function trim(value) {
     return value.replace(/^\s+|\s+$/g, '');
 }
 
+// XSS sanitation
+function sanitizeInput(input) {
+    if (typeof input !== 'string') return input;``
+    return input.replace(/<[^>]*>/g, '');
+  }
+
+  // How could this happen to meeeeeee
+function validateNoScript() {
+    const fields = ['name', 'email', 'phone', 'subject', 'message'];
+    
+    for (let field of fields) {
+      let value = document.getElementById(field).value;
+      if (/<script|javascript:/i.test(value)) {
+        document.getElementById(field).focus();
+        alert("Please don't include code or script tags in the " + field + " field.");
+        return true; 
+      }
+    }
+    return false; 
+  }

@@ -12,9 +12,9 @@
     --color-gray-800: #414141;
     --color-gray-900: #212121;
     --color-black: #111111;
-    --color-accent: #005501; /* Sunset Orange After Project */
-    --color-accent-dark: #0c3600;
-    --color-accent-light: #b2fdac;
+    --color-accent: #FF6B35; /* Sunset Orange After Project */
+    --color-accent-dark: #b33e14;
+    --color-accent-light: #ff8255;
 
     
     /* Font */
@@ -51,9 +51,9 @@
     --color-gray-800: #414141;
     --color-gray-900: #212121;
     --color-black: #111111;
-    --color-accent: #0b830d;
-    --color-accent-dark: #0c3600;
-    --color-accent-light: #b2fdac;
+    --color-accent: #FF6B35; 
+    --color-accent-dark: #b33e14;
+    --color-accent-light: #ff8255;
     --font-family: 'Space Grotesk', sans-serif;
 
     color-scheme: dark;
@@ -659,8 +659,27 @@ nav ul {
 code{
     font-size: 1rem;
 }
+
 code strong{
     color: var(--color-accent-light);
+}
+
+.code-snippet pre code {
+    transition: opacity 0.5s ease;
+}
+
+.language-indicator {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: var(--color-accent);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 0 0 0 8px;
+    font-family: monospace;
+    font-weight: bold;
+    z-index: 2;
+    transition: background-color 0.3s ease;
 }
 
 .code-snippet {
@@ -1549,11 +1568,14 @@ footer {
     code{
         text-align: left;
     }
-
-
 }
 
 @media (max-width: 768px) {
+
+    .theme-toggle-li {
+        display: none;
+    }
+
     html {
         font-size: 14px;
     }
