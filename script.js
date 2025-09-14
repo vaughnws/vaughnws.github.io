@@ -146,7 +146,7 @@ function load() {
         'font-size: 20px; font-weight: bold; color: #ff6b35;'
     );
     console.log(
-        '%cThanks for checking out my portfolio, Id love the chat, contact me at the bottom of the website :)',
+        '%cThanks for checking out my portfolio, If I look like a good fit, Id love to chat, contact me at the bottom of the website :)',
         'font-size: 14px; color:rgb(186, 186, 186);'
     );
     console.log(
