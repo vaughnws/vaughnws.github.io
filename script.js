@@ -142,11 +142,11 @@ function load() {
     hideErrors();
 
     console.log(
-        '%cHello there, Ms Kaur!',
+        '%cHello there, Curious person!',
         'font-size: 20px; font-weight: bold; color: #ff6b35;'
     );
     console.log(
-        '%cThanks for checking out my portfolio, as of right now ive spent: 37 Hours working on it !',
+        '%cThanks for checking out my portfolio, Id love the chat, contact me at the bottom of the website :)',
         'font-size: 14px; color:rgb(186, 186, 186);'
     );
     console.log(
