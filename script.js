@@ -122,19 +122,22 @@ function load() {
    document.getElementById("reset_button").addEventListener('click', resetForm);
 
    // Project listeners
-    document.getElementById("project1").addEventListener('click', function() {
-        location.href='https://github.com/vaughnws/MethodExplorer';
+	document.getElementById("project1").addEventListener('click', function() {
+        location.href='https://eduaitools.ca';
     });
     document.getElementById("project2").addEventListener('click', function() {
-        location.href='https://github.com/vaughnws/gradetracker';
+        location.href='https://github.com/vaughnws/MethodExplorer';
     });
     document.getElementById("project3").addEventListener('click', function() {
-        location.href='https://github.com/vaughnws/JdocGenerator';
+        location.href='https://github.com/vaughnws/gradetracker';
     });
     document.getElementById("project4").addEventListener('click', function() {
-        location.href='https://www.reddit.com/r/diydrones/comments/1b06nz9/diy_ground_station_v1/';
+        location.href='https://github.com/vaughnws/JdocGenerator';
     });
     document.getElementById("project5").addEventListener('click', function() {
+        location.href='https://www.reddit.com/r/diydrones/comments/1b06nz9/diy_ground_station_v1/';
+    });
+    document.getElementById("project6").addEventListener('click', function() {
         location.href='https://www.reddit.com/r/fpv/comments/1bs0c3f/ultra_long_range_antenna_mast/';
     });
   
